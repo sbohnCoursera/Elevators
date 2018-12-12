@@ -1,35 +1,48 @@
-function Elevator(number, floor, dir) {
+function Elevator(number) {
 
 	this.number = number;
 	this.floor = 1;
 	this.direction = "up";
-	this.trips = 0;
-	this.floors = 0;
+	this.doorsOpen = "false";
+	this.tripsMade = 0;
+	this.floorsPassed = 0;
 	this.maintenance = false;
+	this.maxTrips = 100;
 
 	this.updateDirection = function() {
 		if(this.direction == "up") {
 			this.direction = "down";
-		else 
+		}
+		else {
 			this.direction = "up";
 		}
 	}
 
 	this.updateFloor = function() {
+		if(this.direction == "up") {
+			this.floor++;
+		}
+		else {
+			this.floor--;
+		}
 		return this.floor;
 	}
 
 	this.updateTrips = function() {
-		return this.trips++;
+		this.trips++;
 	};
 
 	this.updateFloors = function() {
-		return this.floors++;
+		this.floors++;
 	};
 }
 
 function elevatorController(toFloor) {
 
+}
+
+function findAvailableElevator() {
+	
 }
 
 // Set max floors
@@ -39,6 +52,6 @@ var maxFloors = 10;
 var numElevators = 3;
 
 // Initialize elevator objects
-for (var i = 0; i <= numElevators -1; i++) {
-	Things[i]
+for (var i = 0; i <= numElevators - 1; i++) {
+	var elevator[i] = new Elevator(i);
 }
