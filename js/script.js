@@ -1,9 +1,11 @@
+// Define Elevator object constructor
 function Elevator(number) {
 
 	this.number = number;
 	this.floor = 1;
 	this.direction = "up";
-	this.doorsOpen = "false";
+	this.doorsOpen = false;
+	this.isMoving = false;
 	this.tripsMade = 0;
 	this.floorsPassed = 0;
 	this.maintenance = false;
@@ -37,12 +39,30 @@ function Elevator(number) {
 	};
 }
 
+// Control elevator movement
 function elevatorController(toFloor) {
+	// Find available elevator
+	var availableElevator = findAvailableElevator(toFloor);
 
 }
 
-function findAvailableElevator() {
-	
+// Find an available elevator
+function findAvailableElevator(toFloor) {
+	var foundElevators = [];
+	for(var i == 0; i <= numElevators - 1; i++) {
+		if (elevator[i].floor == toFloor) {
+			foundElevator += elevator[i].floor;
+			break;
+		}
+		else if (elevator[i].isMoving) {
+			if ((elevator[i].direction == "up" && elevator[i].floor < toFloor)
+				|| (elevator[i].direction == "down" && elevator[i].floor > toFloor)) {
+				foundElevator += elevator[i].floor;
+				break;
+			}
+		}
+		// Evaluate foundElevator array to find closest available elevator to called floor
+	}
 }
 
 // Set max floors
